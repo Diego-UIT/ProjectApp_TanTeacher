@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/feature"
+        android:title="Featured"
+        android:icon="@drawable/homescreen_menu_star"
+        />
+    <item
+        android:id="@+id/search_frag"
+        android:title="Search"
+        android:icon="@drawable/homescreen_search_ic"
+        />
+    <item
+        android:id="@+id/my_course_frag"
+        android:title="Courses"
+        android:icon="@drawable/homescreen_my_courses_ic"
+        />
+    <item
+        android:id="@+id/cart_frag"
+        android:title="Cart"
+        android:icon="@drawable/homescreen_ic_add_shopping_cart_black_24dp"
+        />
+    <item
+        android:id="@+id/account_frag"
+        android:title="Account"
+        android:icon="@drawable/homescreen_account_ic"
+        />
+</menu>

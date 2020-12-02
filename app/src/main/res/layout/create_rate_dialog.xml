@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    app:cardCornerRadius="5dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="20dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Để lại đánh giá và bình luận cho khóa học này"
+                android:textColor="#000"
+                android:textSize="15dp"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="center"
+                />
+            <androidx.appcompat.widget.AppCompatRatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:theme="@style/Widget.AppCompat.RatingBar"
+                android:id="@+id/courseRatingBar"
+
+                />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Bình luận của bạn..."
+                android:id="@+id/courseComment"
+                />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gửi"
+                android:layout_marginTop="5dp"
+                android:textColor="#fff"
+                android:background="@drawable/rounded_corner_button"
+                android:layout_gravity="center"
+                android:id="@+id/sendRating"
+                />
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.cardview.widget.CardView>

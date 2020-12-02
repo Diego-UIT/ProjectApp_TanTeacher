@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="200dp"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:layout_marginRight="10dp"
+    android:layout_marginBottom="5dp"
+
+    >
+  <androidx.cardview.widget.CardView
+      android:layout_width="match_parent"
+      android:layout_height="120dp"
+      app:cardCornerRadius="8dp"
+      >
+      <ImageView
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+
+
+          android:scaleType="fitXY"
+          android:id="@+id/top_course_image"
+
+          />
+  </androidx.cardview.widget.CardView>
+
+
+    <TextView
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/top_course_title"
+        android:text="Java Programming Masterclass for Software Developers"
+        android:textSize="18dp"
+        />
+  <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal">
+
+    <RatingBar
+        android:id="@+id/top_course_rating"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginLeft="0dip"
+        android:paddingLeft="0dp"
+
+        android:progressTint="@color/golden"
+        android:scaleX=".8"
+        android:scaleY=".8"
+        android:transformPivotX="0dp"
+        android:transformPivotY="0dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="(0)"
+        android:id="@+id/totalVote"
+
+        />
+  </LinearLayout>
+  <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="220.000 đ"
+        android:id="@+id/top_cousers_fee"
+        android:textSize="18dp"
+        android:layout_marginRight="5dp"
+        android:textColor="#000"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="220.000 đ"
+        android:id="@+id/top_cousers_discount"
+        android:textSize="13dp"
+        android:textColor="#792727"
+        />
+  </LinearLayout>
+</LinearLayout>

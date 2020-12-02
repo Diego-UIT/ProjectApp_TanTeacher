@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#f4f4f4"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:orientation="vertical">
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="250dp">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/image1"
+                android:id="@+id/courseDetailImage"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#000"
+                android:alpha="0.6"
+                />
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_centerInParent="true">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    >
+
+                    <TextView
+                        android:id="@+id/courseDetailName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:fontFamily="@font/antic"
+                        android:text="Lập trình Java từ căn bản đến nâng cao"
+                        android:textColor="@color/white"
+                        android:textSize="30dp"
+                        app:fontFamily="@font/open_sans_bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="2"
+                        android:fontFamily="@font/antic"
+                        android:text="Học từ cơ bản đến nâng cao "
+                        android:textColor="@color/white"
+                        android:id="@+id/courseDetailGoal"
+                        android:textSize="20dp"
+                        app:fontFamily="@font/open_sans" />
+                    <LinearLayout
+                        android:layout_marginTop="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Xếp hạng 1"
+                            android:id="@+id/coursRank"
+                            android:drawableLeft="@drawable/activity_course_detail_ic_stars"
+                            android:drawablePadding="5dp"
+                            android:textColor="@color/white"
+                            android:textSize="12dp"
+                            android:background="@drawable/activity_course_detail_detail_border1"
+                            app:fontFamily="@font/open_sans_semibold" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_marginTop="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Viết bởi Quang Thiên"
+                            android:textColor="@color/white"
+                            android:textSize="12dp"
+                            android:id="@+id/courseAuthor"
+                            android:background="@drawable/activity_course_detail_detail_border1"
+                            app:fontFamily="@font/open_sans_semibold"
+                            android:layout_marginRight="10dp"/>
+                        <TextView
+                            android:id="@+id/updateTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Update 2020-04-12T06 "
+                            android:textColor="@color/white"
+                            android:textSize="12dp"
+                            android:background="@drawable/activity_course_detail_detail_border1"
+                            app:fontFamily="@font/open_sans_semibold" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="220.000 đ"
+                android:id="@+id/ccoursePrice"
+                android:textSize="35dp"
+                android:textStyle="bold"
+                android:layout_marginRight="5dp"
+                android:textColor="#000"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="220.000 đ"
+                android:id="@+id/courseOldPrice"
+                android:textSize="20dp"
+                android:fontFamily="@font/anton"
+                android:textColor="#792727"
+                />
+        </LinearLayout>
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="Tham gia ngay"
+            android:textAlignment="center"
+            android:id="@+id/joinCourse"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/activity_course_detail_save_button"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:fontFamily="@font/open_sans_bold"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:layout_marginRight="10dp"
+            >
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:paddingTop="25dp"
+                    android:elevation="25dp"
+                    android:id="@+id/addToCart"
+                    android:paddingBottom="25dp"
+                    android:background="#3867D6"
+                    android:text="Thêm vào giỏ"
+                    android:textSize="11dp"
+                    android:textColor="#fff"
+
+
+                    />
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:paddingTop="25dp"
+                    android:paddingBottom="25dp"
+                    android:text="Viết đánh giá"
+                    android:elevation="25dp"
+                    android:id="@+id/writeComment"
+                    android:textColor="#3F51B5"
+                    android:textSize="11dp"
+                    android:background="#fff"
+                    />
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:padding="15dp"
+            android:background="@drawable/activity_course_detail_border_btn">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mô tả"
+                android:textSize="20dp"
+                android:textColor="#000"
+                android:fontFamily="@font/open_sans_bold"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets conta"
+
+                android:textSize="18dp"
+                android:id="@+id/authorsDescription"
+                android:textColor="#2F3031"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/open_sans_semibold"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:padding="15dp"
+            android:background="@drawable/activity_course_detail_border_btn">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chấm điểm"
+                android:textSize="20dp"
+                android:textColor="#000"
+                android:fontFamily="@font/open_sans_bold"
+                />
+            <LinearLayout
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <RatingBar
+                    android:id="@+id/courseDetailRating"
+                    style="?android:attr/ratingBarStyleIndicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginLeft="0dip"
+                    android:paddingLeft="0dp"
+                    android:rating="4.5"
+                    android:progressTint="@color/golden"
+                    android:scaleX=".8"
+                    android:scaleY=".8"
+                    android:transformPivotX="0dp"
+                    android:transformPivotY="0dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/totalVoteRating"
+                    android:text="(60)"
+                    android:textColor="#2F3031"
+                    android:textSize="20dp"
+                    android:fontFamily="@font/open_sans_semibold"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:padding="15dp"
+            android:background="@drawable/activity_course_detail_border_btn">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Khóa học liên quan"
+                android:textSize="20dp"
+                android:textColor="#000"
+                android:fontFamily="@font/open_sans_bold"
+                />
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginTop="10dp"
+                android:id="@+id/recommendCourses"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:padding="15dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/activity_course_detail_border_btn">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đánh giá của học viên"
+                android:textSize="20dp"
+                android:textColor="#000"
+                android:fontFamily="@font/open_sans_bold"
+                />
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/courseComment"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

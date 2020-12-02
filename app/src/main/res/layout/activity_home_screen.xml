@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/homeTB"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/main_blue"
+
+        >
+
+        <androidx.appcompat.widget.SearchView
+
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/homescreen_seach_view_border"
+            android:backgroundTint="@color/white"
+            android:queryHint="Search"
+
+            app:iconifiedByDefault="false"
+            app:queryHint="Search courses here" />
+
+        <Spinner
+            android:id="@+id/spinner1"
+            style="@style/SpinnerTheme"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+
+
+            android:layout_gravity="start"
+
+            />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/homeTB"
+        android:layout_above="@id/bottomNav"
+        android:id="@+id/container"
+        >
+
+    </FrameLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#f5f6fa"
+        android:backgroundTint="#f5f6fa"
+        app:itemHorizontalTranslationEnabled="false"
+        app:itemIconSize="23dp"
+        app:itemIconTint="@drawable/homescreen_nav_icon_color_state"
+        app:itemTextColor="@drawable/homescreen_nav_icon_color_state"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/homescreen_menu"
+
+        />
+
+</RelativeLayout>
