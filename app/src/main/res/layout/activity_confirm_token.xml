@@ -36,7 +36,7 @@
                 android:layout_marginTop="40dp"
                 android:layout_marginBottom="20dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="Active your account"
+                android:text="Change new password"
                 android:textColor="#000"
                 android:textSize="22sp" />
 
@@ -68,19 +68,49 @@
                     android:background="@drawable/rectangle_corner_whitebg"  />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="New password"
+                app:startIconDrawable="@drawable/ic_baseline_lock_24"
+                android:id="@+id/xacnhanLayout3"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/newPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rectangle_corner_whitebg"  />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Confirm new password"
+                app:startIconDrawable="@drawable/ic_baseline_lock_24"
+                android:id="@+id/xacnhanLayout4"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/confirmNewPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rectangle_corner_whitebg"  />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/XacnhanBtn"
-                android:layout_width="145dp"
+                android:layout_width="170dp"
                 android:layout_height="45dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="24dp"
                 android:background="@drawable/rounded_corner_button"
                 android:fontFamily="@font/roboto_medium"
                 android:padding="12dp"
-                android:text="Submit"
+                android:text="Update password"
+                android:layout_gravity="center"
                 android:textColor="#FFFFFF"
                 android:textSize="14sp" />
 

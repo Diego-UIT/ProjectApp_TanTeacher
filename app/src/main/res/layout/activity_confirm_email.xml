@@ -36,7 +36,7 @@
                 android:layout_marginTop="40dp"
                 android:layout_marginBottom="20dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="Active your account"
+                android:text="Find your UIT account"
                 android:textColor="#000"
                 android:textSize="22sp" />
 
@@ -48,7 +48,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginLeft="20dp"
                 android:fontFamily="@font/open_sans"
-                android:text="Enter your code"
+                android:text="Enter your email or phone number."
                 android:textSize="16sp"
                 android:textColor="#BF000000"
                 />
@@ -56,18 +56,17 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Please code..."
-                app:startIconDrawable="@drawable/ic_baseline_lock_24"
+                android:hint="Please email..."
+                app:startIconDrawable="@drawable/ic_baseline_email_24"
                 android:id="@+id/xacnhanLayout2"
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/activeToken"
+                    android:id="@+id/activeConfirmEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rectangle_corner_whitebg"  />
             </com.google.android.material.textfield.TextInputLayout>
-
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/XacnhanBtn"
