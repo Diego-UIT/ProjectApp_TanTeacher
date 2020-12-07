@@ -102,8 +102,15 @@ public interface IMyService {
     @POST("/payment/pay")
     Observable<String> pay (@Body RequestBody body);
 
+    //Forgot Password
+    @POST("/forgot-password")
+    @FormUrlEncoded
+    Observable<Response<String>> forgotPassword (@Field("email") String email);
 
-
-
-
+    //Reset Password
+    @POST("/reset-password")
+    @FormUrlEncoded
+    Observable<Response<String>> resetPassword (@Field("email") String email,
+                                                @Field("token") String token,
+                                                @Field("password") String newPassword);
 }

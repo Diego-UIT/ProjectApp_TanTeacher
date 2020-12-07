@@ -40,15 +40,26 @@
                 android:textColor="#000"
                 android:textSize="22sp" />
 
-
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/accountForgotPass"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginLeft="20dp"
                 android:fontFamily="@font/open_sans"
-                android:text="Enter your code"
+                android:text="Account: "
+                android:textSize="16sp"
+                android:textColor="#BF000000"
+                />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/open_sans"
+                android:text="Please check mail and enter your code"
                 android:textSize="16sp"
                 android:textColor="#BF000000"
                 />
@@ -56,13 +67,13 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Please code..."
+                android:hint="Your reset code"
                 app:startIconDrawable="@drawable/ic_baseline_lock_24"
-                android:id="@+id/xacnhanLayout2"
+
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/activeToken"
+                    android:id="@+id/resetPassTokenText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rectangle_corner_whitebg"  />
@@ -73,14 +84,15 @@
                 android:layout_height="wrap_content"
                 android:hint="New password"
                 app:startIconDrawable="@drawable/ic_baseline_lock_24"
-                android:id="@+id/xacnhanLayout3"
+
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/newPassword"
+                    android:id="@+id/resetNewPasswordText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/rectangle_corner_whitebg"  />
+                    android:background="@drawable/rectangle_corner_whitebg"
+                    android:inputType="textPassword"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -88,18 +100,19 @@
                 android:layout_height="wrap_content"
                 android:hint="Confirm new password"
                 app:startIconDrawable="@drawable/ic_baseline_lock_24"
-                android:id="@+id/xacnhanLayout4"
+
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/confirmNewPassword"
+                    android:id="@+id/resetConfirmNewPasswordText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/rectangle_corner_whitebg"  />
+                    android:background="@drawable/rectangle_corner_whitebg"
+                    android:inputType="textPassword"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/XacnhanBtn"
+                android:id="@+id/updateNewPassBtn"
                 android:layout_width="170dp"
                 android:layout_height="45dp"
                 android:layout_marginLeft="20dp"

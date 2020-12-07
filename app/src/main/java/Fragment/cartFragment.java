@@ -20,6 +20,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import Activity.PayActivity;
 import Adapter.CartCourseAdapter;
 import Model.courseItem;
 
@@ -59,9 +60,9 @@ public class cartFragment extends Fragment {
         payBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              //  Intent intent=new Intent(getContext(), PayActivity.class);
+              Intent intent=new Intent(getContext(), PayActivity.class);
 
-              //  startActivityForResult(intent,1111);
+              startActivityForResult(intent,1111);
 
             }
         });
