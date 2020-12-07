@@ -97,6 +97,10 @@ public interface IMyService {
 
     @GET
     Observable<String>  getJoinedCourse(@Url String urlGet);
+  
+    //Payment - Week 5
+    @POST("/payment/pay")
+    Observable<String> pay (@Body RequestBody body);
 
 
 
