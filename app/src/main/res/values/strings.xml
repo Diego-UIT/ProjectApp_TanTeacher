@@ -112,4 +112,6 @@
     <string name="title_activity_course_detail">ScrollingActivity</string>
     <string name="action_settings">Settings</string>
     <string name="description_demo">• Network equipment and network infrastructure • Linux network administrator • Windows network administrator • ACL, NAT / PAT, Iptables • SNMP network administrator tool</string>
+    <string name="create_a_course">Create a course</string>
+    <string name="create_your_own_course">Create your own course</string>
 </resources>
