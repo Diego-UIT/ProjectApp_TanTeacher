@@ -1,6 +1,9 @@
 package Fragment;
 
 import android.app.AlertDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -9,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,7 +43,7 @@ import retrofit2.Retrofit;
 import Retrofit.*;
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link FeatureFragment#newInstance} factory method to
+ * Use the  factory method to
  * create an instance of this fragment.
  */
 public class FeatureFragment extends Fragment {
@@ -55,6 +59,7 @@ public class FeatureFragment extends Fragment {
     ArrayList<category_item> items = new ArrayList<>();
     categoryRVAdapter adapter;
     RecyclerView recyclerView;
+    SharedPreferences sharedPreferences;
 
     public FeatureFragment() {
         // Required empty public constructor
@@ -72,6 +77,7 @@ public class FeatureFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View rootView= inflater.inflate(R.layout.fragment_feature, container, false);
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
 
         imageSlider= rootView.findViewById(R.id.image_slider);
         List<SlideModel> imageList=new ArrayList<>();

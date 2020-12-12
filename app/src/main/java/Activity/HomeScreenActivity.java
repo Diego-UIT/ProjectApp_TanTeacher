@@ -35,6 +35,7 @@ import Fragment.AccountFragment;
 import Fragment.FeatureFragment;
 import Fragment.SearchFragment;
 import Fragment.mycoursesFragment;
+import Fragment.createdCourseFragment;
 import Fragment.cartFragment;
 
 import static android.view.View.GONE;
@@ -97,16 +98,16 @@ public class HomeScreenActivity extends AppCompatActivity {
                 ((TextView) parent.getChildAt(0)).setTextColor(Color.WHITE);
                 ((TextView) parent.getChildAt(0)).setTextSize(21);
 
-            /*    if(text.equals("Khóa học đã tạo"))
+                if(text.equals("Created Courses"))
                 {
-                    homeTB.setTitle("Khóa học đã tạo");
+                    homeTB.setTitle("Created Courses");
                     getSupportFragmentManager().beginTransaction().replace(R.id.container,new createdCourseFragment()).commit();
                 }
-                if(text.equals("Khóa đã tham gia"))
+                if(text.equals("Joined Courses"))
                 {
-                    homeTB.setTitle("Đã tham gia");
+                    homeTB.setTitle("Joined Courses");
                     getSupportFragmentManager().beginTransaction().replace(R.id.container,new mycoursesFragment()).commit();
-                }*/
+                }
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -143,7 +144,7 @@ public class HomeScreenActivity extends AppCompatActivity {
                     homeTB.setVisibility(View.VISIBLE);
                     fragment=new mycoursesFragment();
 
-                    homeTB.setTitle("Đã tham gia");
+                    homeTB.setTitle("Joined Courses");
                     ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(HomeScreenActivity.this,
                             R.array.numbers, android.R.layout.simple_spinner_item);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

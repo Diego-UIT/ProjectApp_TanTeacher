@@ -23,7 +23,6 @@
             android:background="@drawable/homescreen_seach_view_border"
             android:backgroundTint="@color/white"
             android:queryHint="Search"
-
             app:iconifiedByDefault="false"
             app:queryHint="Search courses here" />
 

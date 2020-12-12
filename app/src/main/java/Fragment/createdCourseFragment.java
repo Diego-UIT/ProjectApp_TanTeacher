@@ -2,6 +2,7 @@ package Fragment;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -10,6 +11,7 @@ import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.tutorial_v1.R;
@@ -27,61 +29,71 @@ import java.util.ArrayList;
 
 import Adapter.JoinedCourseAdapter;
 import Model.courseItem;
+import Activity.CreateCourse;
 import dmax.dialog.SpotsDialog;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
 import Retrofit.*;
 
-public class mycoursesFragment extends Fragment {
+
+public class createdCourseFragment extends Fragment {
 
     ArrayList<courseItem> courseItems = new ArrayList<>();
     Adapter.JoinedCourseAdapter courseAdapter;
     RecyclerView recyclerView;
     SharedPreferences sharedPreferences;
-    TextView tv;
-    public mycoursesFragment() {
+    Button createCourseButton;
+
+    public createdCourseFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View rootview =inflater.inflate(R.layout.fragment_mycourses, container, false);
-        recyclerView=rootview.findViewById(R.id.my_joined_course);
-        // tv=rootview.findViewById(R.id.sss);
-        courseAdapter=new JoinedCourseAdapter(courseItems,getActivity());
+        final View rootView = inflater.inflate(R.layout.fragment_created_course, container, false);
+        recyclerView = rootView.findViewById(R.id.created_course_recyclerView);
+        courseAdapter = new JoinedCourseAdapter(courseItems, getActivity());
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         courseAdapter.setHasStableIds(true);
-        // Toast.makeText(getContext(), sharedPreferences.getString("id",null), Toast.LENGTH_LONG).show();
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1, GridLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(courseAdapter);
-        getJoinedCoure();
+        getCreatedCourse();
 
-        return  rootview;
+        createCourseButton = rootView.findViewById(R.id.create_course_btn);
+        createCourseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), CreateCourse.class);
+                startActivity(intent);
+            }
+        });
+        return rootView;
     }
-    boolean flag=false;
-    String temp="";
-    private void getJoinedCoure() {
+
+    boolean flag = true;
+    String temp ="";
+    private void getCreatedCourse() {
         IMyService iMyService;
         AlertDialog alertDialog;
         Retrofit retrofitClient= RetrofitClient.getInstance();
         iMyService=retrofitClient.create(IMyService.class);
         alertDialog= new SpotsDialog.Builder().setContext(getContext()).build();
         alertDialog.show();
-        iMyService.getJoinedCourse("http://149.28.24.98:9000/join/get-courses-joined-by-user/"+sharedPreferences.getString("id","")).
-                subscribeOn(Schedulers.io())
+
+        iMyService.getCreatedCourse("http://149.28.24.98:9000/course/getby-iduser/"+sharedPreferences.getString("id",""))
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<String>(){
+                .subscribe(new Observer<String>() {
                     @Override
                     public void onSubscribe(Disposable d) {
 
@@ -104,7 +116,6 @@ public class mycoursesFragment extends Fragment {
                                     }
                                 }, 500);
                         Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-
 
                     }
 
@@ -133,12 +144,11 @@ public class mycoursesFragment extends Fragment {
                                 {
 
                                     JSONObject jo=ja.getJSONObject(i);
-                                    JSONObject jo2=jo.getJSONObject("idCourse");
+                                    //JSONObject jo2=jo.getJSONObject("idUser");
                                     courseItem ci=new courseItem();
-                                    ci.setID(jo2.getString("_id"));
-                                    ci.setTitle(jo2.getString("name"));
-                                    ci.setUrl("http://149.28.24.98:9000/upload/course_image/"+jo2.getString("image"));
-                                    ci.setPercent(jo.getInt("percentCompleted"));
+                                    ci.setID(jo.getString("_id"));
+                                    ci.setTitle(jo.getString("name"));
+                                    ci.setUrl("http://149.28.24.98:9000/upload/course_image/"+jo.getString("image"));
 
                                     ci.setCreateAt(jo.getString("created_at"));
                                     courseItems.add(ci);
@@ -160,7 +170,6 @@ public class mycoursesFragment extends Fragment {
 
                     }
                 });
-        //tv.setText(temp);
     }
 
     @Override
@@ -169,10 +178,11 @@ public class mycoursesFragment extends Fragment {
         Toast.makeText(getContext(), "asdasdasdasdasd", Toast.LENGTH_SHORT).show();
         if(requestCode == 1903) {
 
+
             if(resultCode == Activity.RESULT_OK) {
                 courseItems.clear();
                 courseAdapter.notifyDataSetChanged();
-                getJoinedCoure();
+                getCreatedCourse();
 
 
             } else {
@@ -180,5 +190,4 @@ public class mycoursesFragment extends Fragment {
             }
         }
     }
-
 }

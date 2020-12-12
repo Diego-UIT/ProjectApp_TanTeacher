@@ -39,6 +39,7 @@ public class CourseByCategory extends AppCompatActivity {
     ArrayList<courseItem> courseItems = new ArrayList<>();
     Adapter.courseAdapter courseAdapter;
     category_item categoryItem=new category_item("","");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
