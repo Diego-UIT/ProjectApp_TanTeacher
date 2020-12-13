@@ -126,7 +126,7 @@
     <string name="name_of_the_course">Name of the course</string>
     <string name="target">Target</string>
     <string name="description">Description</string>
-    <string name="field">Field</string>
+    <string name="field">Category</string>
     <string name="price">Price</string>
     <string name="payment">Payment</string>
     <string name="discount">Discount</string>

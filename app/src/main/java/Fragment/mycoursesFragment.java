@@ -4,12 +4,15 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.content.Context;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.tutorial_v1.R;
@@ -163,6 +166,7 @@ public class mycoursesFragment extends Fragment {
         //tv.setText(temp);
     }
 
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -180,5 +184,7 @@ public class mycoursesFragment extends Fragment {
             }
         }
     }
+
+
 
 }

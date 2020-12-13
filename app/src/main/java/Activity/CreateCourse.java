@@ -1,14 +1,9 @@
 package Activity;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import android.Manifest;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -17,6 +12,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -27,29 +23,25 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.android.material.textfield.TextInputEditText;
-import com.squareup.picasso.MemoryPolicy;
-import com.squareup.picasso.NetworkPolicy;
-import com.squareup.picasso.Picasso;
-
 import com.example.tutorial_v1.R;
+import com.google.android.material.textfield.TextInputEditText;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import Model.category_item;
 import Retrofit.IMyService;
-import dmax.dialog.SpotsDialog;
-import retrofit2.Retrofit;
 import Retrofit.RetrofitClient;
 import dmax.dialog.SpotsDialog;
 import es.dmoral.toasty.Toasty;
@@ -59,38 +51,45 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
+import okhttp3.Request;
 import okhttp3.RequestBody;
 import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class CreateCourse extends AppCompatActivity {
     Toolbar createCourseTB;
     Spinner spinner;
-    TextInputEditText courseName, courseTarget, courseDescription,
+    EditText courseName, courseTarget, courseDescription,
     coursePrice, courseDiscount;
     String token, name, target,categoryId, description, price, discount;
     File file;
     Bitmap bitmap;
     IMyService iMyService;
-    boolean flag2 = false;
+    boolean flag2 = false, flag = false;
     AlertDialog alertDialog;
     ImageView courseImage;
     TextView categoryName;
     Button galleryButton, submitButton;
     SharedPreferences sharedPreferences;
+    JSONArray ja;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_course);
         setUIReference();
-        setString();
         ActionToolBar();
-        LoadAllCategory();
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        token = sharedPreferences.getString("token", "");
         alertDialog= new SpotsDialog.Builder().setContext(this).build();
         Retrofit retrofitClient= RetrofitClient.getInstance();
         iMyService=retrofitClient.create(IMyService.class);
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        token = sharedPreferences.getString("token", "");
+        try {
+            ja = new JSONArray(sharedPreferences.getString("category_array",""));
+            categoryId = ja.getJSONObject(0).getString("_id");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         //TODO - 1st - Get String from sharedPreferences and put into JSONArray
 
         //TODO - Spinner for category
@@ -108,14 +107,48 @@ public class CreateCourse extends AppCompatActivity {
                     //TODO - 3rd - Get ID from category for loop and put into categoryId
                     if (text.equals("Mathematics - Informatics")) {
                         categoryName.setText(R.string.math_category);
+                        try {
+                            for(int i=0; i < ja.length(); i++) {
+                                String tempName = ja.getJSONObject(i).getString("name");
+                                String tempID = ja.getJSONObject(i).getString("_id");
+                                if (text.equals(tempName)){
+                                    categoryId = tempID;
+                                }
+                            }
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+
                     }
 
                     if (text.equals("Information Technology")) {
                         categoryName.setText(R.string.it_category);
+                        try {
+                            for(int i=0; i < ja.length(); i++) {
+                                String tempName = ja.getJSONObject(i).getString("name");
+                                String tempID = ja.getJSONObject(i).getString("_id");
+                                if (text.equals(tempName)){
+                                    categoryId = tempID;
+                                }
+                            }
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
                     }
 
                     if (text.equals("Languages")) {
                         categoryName.setText(R.string.la_category);
+                        try {
+                            for(int i=0; i < ja.length(); i++) {
+                                String tempName = ja.getJSONObject(i).getString("name");
+                                String tempID = ja.getJSONObject(i).getString("_id");
+                                if (text.equals(tempName)){
+                                    categoryId = tempID;
+                                }
+                            }
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
                     }
                 }
 
@@ -152,8 +185,8 @@ public class CreateCourse extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (CheckPriceAndDiscount())
-                    CreateNewCourse();
+                setString();
+                CreateNewCourse();
             }
         });
     }
@@ -165,10 +198,19 @@ public class CreateCourse extends AppCompatActivity {
                         MediaType.parse("image/jpg"),
                         file
                 );
-        MultipartBody.Part part = MultipartBody.Part.createFormData("image", file.getName(), fileReqBody);
+        //MultipartBody.Part part = MultipartBody.Part.createFormData("image", file.getName(), fileReqBody);
+        RequestBody requestBody = new MultipartBody.Builder().setType(MultipartBody.FORM)
+                .addFormDataPart("name", name)
+                .addFormDataPart("goal", target)
+                .addFormDataPart("description", description)
+                .addFormDataPart("category", categoryId)
+                .addFormDataPart("price", price)
+                .addFormDataPart("discount", discount)
+                .addFormDataPart("image", file.getName(), RequestBody.create(MediaType.parse("application/octet-stream"),
+                        file)).build();
 
         alertDialog.show();
-        iMyService.createCourse(token, name, target, categoryId, price, discount, part,  description)
+        iMyService.createCourse(token, requestBody)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<Response<String>>() {
@@ -179,17 +221,43 @@ public class CreateCourse extends AppCompatActivity {
 
                     @Override
                     public void onNext( Response<String> stringResponse) {
+                        if (stringResponse.isSuccessful()){
+                            if (stringResponse.body().contains("success")){
+                                flag = true;
+                            }
+                        }
 
                     }
 
                     @Override
                     public void onError(Throwable e) {
+                        new android.os.Handler().postDelayed(
+                                new Runnable() {
+                                    public void run() {
+                                        alertDialog.dismiss();
 
+                                    }
+                                }, 500);
+                        Toasty.error(CreateCourse.this, e.getMessage(), Toasty.LENGTH_LONG).show();
+                        setButtonState(true);
                     }
 
                     @Override
                     public void onComplete() {
+                        new android.os.Handler().postDelayed(
+                                new Runnable() {
+                                    public void run() {
+                                        alertDialog.dismiss();
 
+                                    }
+                                }, 500);
+                        if (flag == true){
+                            Toasty.success(CreateCourse.this, "Success", Toasty.LENGTH_LONG).show();
+                            finish();
+                        }else {
+                            Toasty.error(CreateCourse.this, "Error", Toasty.LENGTH_LONG).show();
+                            setButtonState(true);
+                        }
                     }
                 });
     }
@@ -275,22 +343,6 @@ public class CreateCourse extends AppCompatActivity {
         galleryButton.setClickable(state);
         galleryButton.setEnabled(state);
     }
-    private boolean CheckPriceAndDiscount (){
-        boolean valid = true;
-        float fPrice = Float.parseFloat(price);
-        float fDiscount = Float.parseFloat(discount);
-
-        if(price.isEmpty() || fPrice < 0 || fPrice > 100000000){
-            valid = false;
-            coursePrice.setError("Invalid price");
-        }
-
-        if (discount.isEmpty() || fDiscount < 0 || fDiscount > 100) {
-            valid = false;
-            courseDiscount.setError("Invalid discount");
-        }
-        return valid;
-    }
 
     private void ActionToolBar() {
         setSupportActionBar(createCourseTB);
@@ -305,77 +357,4 @@ public class CreateCourse extends AppCompatActivity {
         });
     }
 
-    boolean flag_category = false;
-    private void LoadAllCategory() {
-
-        IMyService iMyService;
-        AlertDialog alertDialog;
-        Retrofit retrofitClient= RetrofitClient.getInstance();
-        iMyService=retrofitClient.create(IMyService.class);
-        alertDialog= new SpotsDialog.Builder().setContext(getApplicationContext()).build();
-        alertDialog.show();
-        iMyService.getAllCategory().
-                subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<String>(){
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-                    @Override
-                    public void onNext(String response) {
-
-
-
-
-                        try {
-
-                            String temp=response;
-
-                            JSONArray ja=new JSONArray(response);
-                            Editor editor = sharedPreferences.edit();
-                            editor.putString("categoryJSONArray", ja.toString());
-                            editor.apply();
-
-                            flag_category=true;
-
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            Toast.makeText(CreateCourse.this, e.toString(), Toast.LENGTH_LONG).show();
-                        }
-                    }
-                    @Override
-                    public void onError(Throwable e) {
-                        new android.os.Handler().postDelayed(
-                                new Runnable() {
-                                    public void run() {
-                                        alertDialog.dismiss();
-
-                                    }
-                                }, 500);
-                        Toast.makeText(CreateCourse.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onComplete() {
-                        new android.os.Handler().postDelayed(
-                                new Runnable() {
-                                    public void run() {
-                                        alertDialog.dismiss();
-                                    }
-                                }, 500);
-
-                        if(flag_category==true)
-                        {
-
-                        }
-                        else
-                            Toast.makeText(CreateCourse.this, "Đã có lỗi xảy ra", Toast.LENGTH_SHORT).show();
-
-                    }
-                });
-    }
 }

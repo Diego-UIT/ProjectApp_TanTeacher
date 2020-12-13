@@ -117,15 +117,8 @@ public interface IMyService {
                                                 @Field("token") String token,
                                                 @Field("password") String newPassword);
 
-    @Multipart
+
     @POST("/course/create")
-    @FormUrlEncoded
     Observable<Response<String>> createCourse(@Header("auth-token") String authToken,
-                                              @Field("name") String name,
-                                              @Field("goal") String goal,
-                                              @Field("category") String category,
-                                              @Field("price") String price,
-                                              @Field("discount") String discount,
-                                              @Part MultipartBody.Part file,
-                                              @Field("description") String description);
+                                              @Body RequestBody requestBody);
 }

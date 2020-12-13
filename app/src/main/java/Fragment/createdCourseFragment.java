@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,6 +69,7 @@ public class createdCourseFragment extends Fragment {
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1, GridLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(courseAdapter);
         getCreatedCourse();
+        LoadAllCategory();
 
         createCourseButton = rootView.findViewById(R.id.create_course_btn);
         createCourseButton.setOnClickListener(new View.OnClickListener() {
@@ -167,6 +169,72 @@ public class createdCourseFragment extends Fragment {
                         }
                         else
                             Toast.makeText(getContext(), "Chưa có dữ liệu", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+    }
+
+    boolean flag_category = false;
+    private void LoadAllCategory() {
+        IMyService iMyService;
+        AlertDialog alertDialog;
+        Retrofit retrofitClient= RetrofitClient.getInstance();
+        iMyService=retrofitClient.create(IMyService.class);
+        alertDialog= new SpotsDialog.Builder().setContext(getContext()).build();
+        alertDialog.show();
+        iMyService.getAllCategory().
+                subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<String>(){
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+                    @Override
+                    public void onNext(String response) {
+                        try {
+
+                            JSONArray ja=new JSONArray(response);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("category_array", ja.toString());
+                            editor.apply();
+                            Log.v("category", sharedPreferences.getString("category_array", ""));
+                            flag_category = true;
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(getContext(), e.toString(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                    @Override
+                    public void onError(Throwable e) {
+                        new android.os.Handler().postDelayed(
+                                new Runnable() {
+                                    public void run() {
+                                        alertDialog.dismiss();
+
+                                    }
+                                }, 500);
+                        Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        new android.os.Handler().postDelayed(
+                                new Runnable() {
+                                    public void run() {
+                                        alertDialog.dismiss();
+                                    }
+                                }, 500);
+
+                        if(flag_category==true)
+                        {
+
+                        }
+                        else
+                            Toast.makeText(getContext(), "Đã có lỗi xảy ra", Toast.LENGTH_SHORT).show();
 
                     }
                 });
