@@ -138,4 +138,5 @@
     <string name="it_category">Information Technology</string>
     <string name="la_category">Languages</string>
     <string name="gallery">Gallery</string>
+    <string name="delete">Delete</string>
 </resources>

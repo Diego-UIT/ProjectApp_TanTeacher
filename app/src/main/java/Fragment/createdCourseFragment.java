@@ -28,7 +28,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import Adapter.JoinedCourseAdapter;
+import Adapter.CreatedCourseAdapter;
 import Model.courseItem;
 import Activity.CreateCourse;
 import dmax.dialog.SpotsDialog;
@@ -44,7 +44,7 @@ import Retrofit.*;
 public class createdCourseFragment extends Fragment {
 
     ArrayList<courseItem> courseItems = new ArrayList<>();
-    Adapter.JoinedCourseAdapter courseAdapter;
+    Adapter.CreatedCourseAdapter courseAdapter;
     RecyclerView recyclerView;
     SharedPreferences sharedPreferences;
     Button createCourseButton;
@@ -63,7 +63,7 @@ public class createdCourseFragment extends Fragment {
                              Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_created_course, container, false);
         recyclerView = rootView.findViewById(R.id.created_course_recyclerView);
-        courseAdapter = new JoinedCourseAdapter(courseItems, getActivity());
+        courseAdapter = new CreatedCourseAdapter(courseItems, getActivity());
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         courseAdapter.setHasStableIds(true);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1, GridLayoutManager.VERTICAL, false));

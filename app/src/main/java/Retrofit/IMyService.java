@@ -2,9 +2,11 @@ package Retrofit;
 
 import io.reactivex.Observable;
 import okhttp3.MultipartBody;
+import okhttp3.Request;
 import okhttp3.RequestBody;
 import retrofit2.Response;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -117,8 +119,14 @@ public interface IMyService {
                                                 @Field("token") String token,
                                                 @Field("password") String newPassword);
 
-
+    //Create Course
     @POST("/course/create")
     Observable<Response<String>> createCourse(@Header("auth-token") String authToken,
                                               @Body RequestBody requestBody);
+
+    //Delete created course
+    @DELETE
+    Observable<Response<String>> deleteCourse(@Header("auth-token") String authToken,
+                                              @Url String url);
+
 }

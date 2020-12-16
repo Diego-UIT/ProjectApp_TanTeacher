@@ -30,6 +30,7 @@ public class topCourseAdapter extends RecyclerView.Adapter<topCourseAdapter.Cust
 
     private ArrayList<courseItem> items;
     private Context context;
+
     public topCourseAdapter(ArrayList<courseItem> items, Context context) {
         this.items = items;
         this.context = context;

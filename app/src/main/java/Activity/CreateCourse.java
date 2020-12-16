@@ -90,7 +90,6 @@ public class CreateCourse extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        //TODO - 1st - Get String from sharedPreferences and put into JSONArray
 
         //TODO - Spinner for category
         {
@@ -103,8 +102,6 @@ public class CreateCourse extends AppCompatActivity {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     String text = parent.getItemAtPosition(position).toString();
-                    //TODO - 2nd - Change into for loop to get category name and put into view
-                    //TODO - 3rd - Get ID from category for loop and put into categoryId
                     if (text.equals("Mathematics - Informatics")) {
                         categoryName.setText(R.string.math_category);
                         try {
@@ -185,11 +182,12 @@ public class CreateCourse extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setString();
+                if (CheckValidInput())
                 CreateNewCourse();
             }
         });
     }
+
 
     private void CreateNewCourse() {
         setButtonState(false);
@@ -323,6 +321,7 @@ public class CreateCourse extends AppCompatActivity {
         description = courseDescription.getText().toString();
         price = coursePrice.getText().toString();
         discount = courseDiscount.getText().toString();
+        if(discount.isEmpty()) discount = "0";
     }
     private void setUIReference() {
         spinner = findViewById(R.id.category_spinner);
@@ -335,6 +334,42 @@ public class CreateCourse extends AppCompatActivity {
         coursePrice = findViewById(R.id.create_course_price_input);
         courseDiscount = findViewById(R.id.create_course_discount_input);
         submitButton = findViewById(R.id.create_course_submit_btn);
+    }
+
+    private boolean CheckValidInput() {
+        boolean valid = true;
+        setString();
+
+        if(name.isEmpty() || name.length() > 40){
+            valid = false;
+            courseName.setError("Invalid Name");
+        }
+
+        if(target.isEmpty()) {
+            valid = false;
+            courseTarget.setError("Invalid Target");
+        }
+
+        if(description.isEmpty()){
+            valid = false;
+            courseDescription.setError("Invalid Description");
+        }
+
+        if(price.isEmpty()) {
+            valid = false;
+            coursePrice.setError("Invalid Price");
+        }
+
+        if(Integer.parseInt(discount) < 0 || Integer.parseInt(discount) > 100){
+            valid = false;
+            courseDiscount.setError("Invalid Discount");
+        }
+
+        if(!flag2){
+            Toasty.error(getApplicationContext(), "Please pick a picture for this course", Toasty.LENGTH_SHORT).show();
+            valid = false;
+        }
+        return valid;
     }
 
     private void setButtonState (boolean state) {
