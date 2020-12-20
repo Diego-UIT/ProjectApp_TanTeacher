@@ -108,15 +108,15 @@ public class AccountFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder alertDialog= new AlertDialog.Builder(getContext())
-                        .setTitle("Đăng xuất")
-                        .setMessage("Bạn có chắc muốn đăng xuất")
-                        .setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                        .setTitle("Log out")
+                        .setMessage("Are you sure ?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Logout();
 
                             }
-                        }).setNegativeButton("Không", new DialogInterface.OnClickListener() {
+                        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
@@ -201,13 +201,14 @@ public class AccountFragment extends Fragment {
                             editor.remove("address");
                             editor.remove("token");
                             editor.remove(("cartArray"));
+                            editor.remove("already_login");
                             editor.commit();
                             Intent intent =new Intent(getContext(),LoginActivity.class);
                             startActivity(intent);
 
                         }
                         else
-                            Toast.makeText(getContext(), "Đã có lỗi xảy ra", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
 
                     }
                 });
