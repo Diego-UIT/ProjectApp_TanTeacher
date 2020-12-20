@@ -17,6 +17,13 @@
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp" />
     </ScrollView>
+    <ImageView
+        android:id="@+id/empty_cart_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/empty_cart"
+        android:visibility="gone"/>
     <LinearLayout
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"

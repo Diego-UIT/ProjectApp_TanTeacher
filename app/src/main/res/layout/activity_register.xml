@@ -147,7 +147,8 @@
                     android:id="@+id/matkhauText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/rectangle_corner_whitebg" />
+                    android:background="@drawable/rectangle_corner_whitebg"
+                    android:inputType="textPassword"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -161,7 +162,8 @@
                     android:id="@+id/xacnhanText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/rectangle_corner_whitebg" />
+                    android:background="@drawable/rectangle_corner_whitebg"
+                    android:inputType="textPassword"/>
             </com.google.android.material.textfield.TextInputLayout>
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/regisBtn"

@@ -190,7 +190,7 @@ public class UserAvatarActivity extends AppCompatActivity {
 
                         if(flag==true)
                         {
-                            Toasty.success(UserAvatarActivity.this, "Cập nhật ảnh thành công", Toast.LENGTH_SHORT).show();
+                            Toasty.success(UserAvatarActivity.this, "Update avatar success", Toast.LENGTH_SHORT).show();
                             final Intent data = new Intent();
 
                             data.putExtra("usernewAcc", userAccount);
@@ -200,7 +200,7 @@ public class UserAvatarActivity extends AppCompatActivity {
                             finish();
                         }
                         else
-                            Toast.makeText(UserAvatarActivity.this, "Cập nhật thất bại", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(UserAvatarActivity.this, "Update failed", Toast.LENGTH_SHORT).show();
 
                     }
                 });

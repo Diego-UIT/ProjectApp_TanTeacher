@@ -73,7 +73,7 @@ public class UserInfoActivity extends AppCompatActivity {
         mota = etMota.getText().toString();
         gioitinh = etGioitinh.getText().toString();
         if (hoten.isEmpty() || sdt.isEmpty() || diachi.isEmpty() || gioitinh.isEmpty() || mota.isEmpty()) {
-            Toast.makeText(this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please full fill your information", Toast.LENGTH_SHORT).show();
             valid = false;
         } else valid = true;
         return valid;
@@ -172,7 +172,7 @@ public class UserInfoActivity extends AppCompatActivity {
                                 }, 500);
 
                         if (flag == true) {
-                            Toasty.success(UserInfoActivity.this, "Cập nhật thông tin thành công", Toast.LENGTH_SHORT).show();
+                            Toasty.success(UserInfoActivity.this, "Update info success", Toast.LENGTH_SHORT).show();
                             final Intent data = new Intent();
 
                             data.putExtra("usernewAcc", userAccount);
@@ -181,7 +181,7 @@ public class UserInfoActivity extends AppCompatActivity {
 
                             finish();
                         } else
-                            Toast.makeText(UserInfoActivity.this, "Cập nhật thất bại", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(UserInfoActivity.this, "Update failed", Toast.LENGTH_SHORT).show();
                         updateBtn.setEnabled(true);
                         updateBtn.setClickable(true);
                     }

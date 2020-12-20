@@ -10,7 +10,7 @@
         android:layout_height="50dp"
         android:background="@color/main_blue"
         android:id="@+id/payTB"
-        app:title="Thanh toán"
+        app:title="Payment via Stripe"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         />
     <ImageView
@@ -54,12 +54,15 @@
         android:id="@+id/cardInput"
         />
     <Button
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_margin="20dp"
         android:layout_height="wrap_content"
-        android:text="Thanh toán "
+        android:layout_gravity="center"
+        android:paddingHorizontal="100dp"
+        android:textSize="18sp"
+        android:text="PAY"
         android:textColor="#fff"
-        android:background="@drawable/shadow_btn"
+        android:background="@drawable/rounded_corner_button"
         android:id="@+id/payBtn"
         />
     <TextView

@@ -136,7 +136,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="10dp"
-                    android:text="Update Profile"
+                    android:text="Update Avatar"
                     android:textColor="#000"
                     android:textSize="20sp" />
 
@@ -162,7 +162,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="10dp"
-                    android:text="Changing Password"
+                    android:text="Password"
                     android:textColor="#000"
                     android:textSize="20sp" />
             </LinearLayout>

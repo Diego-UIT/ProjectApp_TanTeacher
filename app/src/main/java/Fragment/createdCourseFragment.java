@@ -168,7 +168,7 @@ public class createdCourseFragment extends Fragment {
 
                         }
                         else
-                            Toast.makeText(getContext(), "Chưa có dữ liệu", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "No data available", Toast.LENGTH_SHORT).show();
 
                     }
                 });
@@ -234,7 +234,7 @@ public class createdCourseFragment extends Fragment {
 
                         }
                         else
-                            Toast.makeText(getContext(), "Đã có lỗi xảy ra", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
 
                     }
                 });

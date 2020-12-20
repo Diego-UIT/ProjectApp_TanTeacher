@@ -18,7 +18,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Để lại đánh giá và bình luận cho khóa học này"
+                android:text="Leave a rating and comment for this course"
                 android:textColor="#000"
                 android:textSize="15dp"
                 android:layout_marginBottom="10dp"
@@ -34,13 +34,13 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Bình luận của bạn..."
+                android:hint="Your comment..."
                 android:id="@+id/courseComment"
                 />
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Gửi"
+                android:text="Send"
                 android:layout_marginTop="5dp"
                 android:textColor="#fff"
                 android:background="@drawable/rounded_corner_button"

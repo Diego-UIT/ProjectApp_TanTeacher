@@ -49,9 +49,9 @@ public class SearchResultActivity extends AppCompatActivity {
       //  showString = getIntent().getStringExtra("name");
         ActionToolbar();
         if(showString.length() == 0)
-            nameTextView.setText("Kết quả cho \""+searchString+"\"");
+            nameTextView.setText("Result for \""+searchString+"\"");
         else
-            nameTextView.setText("Kết quả cho \""+showString+"\"");
+            nameTextView.setText("Result for \""+showString+"\"");
         courseAdapter = new courseAdapter(courseItems, SearchResultActivity.this);
         courseAdapter.setHasStableIds(true);
 
@@ -69,7 +69,7 @@ public class SearchResultActivity extends AppCompatActivity {
         Retrofit retrofitClient= RetrofitClient.getInstance();
         iMyService=retrofitClient.create(IMyService.class);
         alertDialog= new SpotsDialog.Builder().setContext(this).build();
-        alertDialog.setTitle("Đang tìm kiếm...");
+        alertDialog.setTitle("Searching...");
         alertDialog.show();
         iMyService.getCourseByCategory("http://149.28.24.98:9000/course/search-course/" +searchString).
                 subscribeOn(Schedulers.io())

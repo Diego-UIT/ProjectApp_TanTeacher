@@ -127,7 +127,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 }
 
                             } else {
-                                Toast.makeText(RegisterActivity.this, "Mail đã tồn tại", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(RegisterActivity.this, "Email already exists", Toast.LENGTH_SHORT).show();
                                 flag = false;
                             }
                         } else {
@@ -164,7 +164,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                                     }
                                 }, 500);
-                        Toast.makeText(RegisterActivity.this, "Lỗi kết nối", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this, "Connection error", Toast.LENGTH_SHORT).show();
                         flag = false;
 
                     }
@@ -208,7 +208,7 @@ public class RegisterActivity extends AppCompatActivity {
         GioiTinh=GioiTinhText.getText().toString();
         if(name.isEmpty()||name.length()<3 || name.length()>40)
         {
-            HoTenText.setError("Tên từ 3 đến 40 ký tự");
+            HoTenText.setError("Name must from 3 to 40 characters");
             valid = false;
         } else {
             HoTenText.setError(null);
@@ -216,7 +216,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         if(username.isEmpty() || username.length() < 3 || username.length() >40 )
         {
-            TaiKhoanText.setError("Từ 6 đến 40 ký tự");
+            TaiKhoanText.setError("Must from 6 to 40 characters");
             valid = false;
         } else {
             TaiKhoanText.setError(null);
@@ -226,7 +226,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         if(mobile.isEmpty())
         {
-            SdtText.setError("Nhập số điện thoại không hợp lệ ");
+            SdtText.setError("Invalid phone number");
             valid = false;
         } else {
             SdtText.setError(null);
@@ -234,7 +234,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         if(password.isEmpty() || password.length() <8 || password.length()>16 )
         {
-            MatKhauText.setError("Mật khẩu có 8 đến 16 ký tự");
+            MatKhauText.setError("Must from 8 to 16 characters");
             valid = false;
         } else {
             MatKhauText.setError(null);
@@ -242,7 +242,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         if(reEnterPassword.isEmpty() || reEnterPassword.length() < 8 || reEnterPassword.length()>16 || !reEnterPassword.equals(password) )
         {
-            XacNhanText.setError("Mật khẩu không khớp");
+            XacNhanText.setError("Wrong confirm password");
             valid = false;
         } else{
             XacNhanText.setError(null);

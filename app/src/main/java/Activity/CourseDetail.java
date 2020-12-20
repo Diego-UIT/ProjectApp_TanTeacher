@@ -122,7 +122,7 @@ public class CourseDetail extends AppCompatActivity {
             public void onClick(View v) {
                 String stringFromJSONArray=cartArray.toString();
                 if(stringFromJSONArray.contains(courseItem.getID()))
-                    Toasty.warning(CourseDetail.this, "Khóa học đã có sẵn trong giỏ hàng !", Toast.LENGTH_SHORT).show();
+                    Toasty.warning(CourseDetail.this, "Already in the cart !", Toast.LENGTH_SHORT).show();
                 else {
                     JSONObject jo = new JSONObject();
                     try {
@@ -140,7 +140,7 @@ public class CourseDetail extends AppCompatActivity {
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString("cartArray", cartArray.toString());
                     editor.apply();
-                    Toasty.success(CourseDetail.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
+                    Toasty.success(CourseDetail.this, "Add to cart", Toast.LENGTH_SHORT).show();
                 }
                 addToCart.setEnabled(false);
 
@@ -299,7 +299,7 @@ public class CourseDetail extends AppCompatActivity {
 
                                     }
                                 }, 500);
-                        Toasty.error(CourseDetail.this, "Bạn chưa hoàn thành 80% khóa học", Toast.LENGTH_SHORT).show();
+                        Toasty.error(CourseDetail.this, "You haven't completed 80% of this course", Toast.LENGTH_SHORT).show();
 
 
                     }
@@ -318,12 +318,12 @@ public class CourseDetail extends AppCompatActivity {
                         {
 
 
-                            Toasty.success(CourseDetail.this, "Gửi thành công", Toast.LENGTH_SHORT).show();
+                            Toasty.success(CourseDetail.this, "Success", Toast.LENGTH_SHORT).show();
 
 
                         }
                         else
-                            Toast.makeText(CourseDetail.this, "Lỗi", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CourseDetail.this, "Error", Toast.LENGTH_SHORT).show();
 
                     }
                 });
@@ -385,12 +385,12 @@ public class CourseDetail extends AppCompatActivity {
 
                         if(flag==true)
                         {
-                            Toast.makeText(CourseDetail.this, "Tham gia thành công", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CourseDetail.this, "Joined success", Toast.LENGTH_SHORT).show();
                             flag=false;
 
                         }
                         else
-                            Toast.makeText(CourseDetail.this, "Bạn đã tham gia khóa hoc này rồi", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CourseDetail.this, "You already joined this course", Toast.LENGTH_SHORT).show();
 
                     }
                 });
@@ -552,16 +552,16 @@ public class CourseDetail extends AppCompatActivity {
         Picasso.get().load(courseItem.getUrl()).placeholder(R.drawable.image1).error(R.drawable.image1).networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE).into(courseImage);
         courseName.setText(courseItem.getTitle());
         courseGoal.setText(courseItem.getGoal());
-        courseRank.setText("Xếp hạng "+courseItem.getRanking());
+        courseRank.setText("Raking "+courseItem.getRanking());
         courseAuthor.setText(courseItem.getAuthor());
-        courseUpdateTime.setText("Cập nhật lúc "+courseItem.getUpdateTime());
+        courseUpdateTime.setText("Update time: "+courseItem.getUpdateTime());
 
         NumberFormat formatter = new DecimalFormat("#,###");
         double price=(double)courseItem.getPrice();
         double discount=(double)courseItem.getDiscount();
         if(price==0) {
-            coursePrice.setText("Miễn phí");
-            courseJoinBtn.setText("Tham gia ngay");
+            coursePrice.setText("Free");
+            courseJoinBtn.setText("Join Now");
             courseOldPrice.setVisibility(GONE);
             addToCart.setVisibility(GONE);
         }else if(price!=0&&discount==0)

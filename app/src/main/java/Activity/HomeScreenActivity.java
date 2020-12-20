@@ -79,8 +79,8 @@ public class HomeScreenActivity extends AppCompatActivity {
         userAccount.setMatkhau(sharedPreferences.getString("password","default"));
         bottomNav.setOnNavigationItemSelectedListener(bottomNavMethod);
 
-      /*  getSupportFragmentManager().beginTransaction().replace(R.id.container,new featuredFragment()).commit();
-        suggestionAdapter=new ArrayAdapter<>(HomeScreenActivity.this,R.layout.suggestion);*/
+        getSupportFragmentManager().beginTransaction().replace(R.id.container,new FeatureFragment()).commit();
+       /* suggestionAdapter=new ArrayAdapter<>(HomeScreenActivity.this,R.layout.suggestion);*/
         homeTB.setVisibility(GONE);
         Spinner spinner = findViewById(R.id.spinner1);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,

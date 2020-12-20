@@ -42,7 +42,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mới nhất nè"
+            android:text="Newest"
             android:textSize="22dp"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="15dp"
@@ -60,7 +60,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Miễn phí"
+            android:text="Free"
             android:textSize="22dp"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="15dp"
@@ -77,7 +77,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tốt Nhất"
+            android:text="Best"
             android:textSize="22dp"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="15dp"

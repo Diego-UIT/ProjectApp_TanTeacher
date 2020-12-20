@@ -47,7 +47,7 @@ public class topCourseAdapter extends RecyclerView.Adapter<topCourseAdapter.Cust
         NumberFormat formatter = new DecimalFormat("#,###");
         double price=(double)items.get(position).getPrice();
         String formattedNumber1 = formatter.format(price);
-        if(formattedNumber1.equals("0")) holder.fee.setText("Miễn phí");
+        if(formattedNumber1.equals("0")) holder.fee.setText("Free");
         else
             holder.fee.setText(formattedNumber1+" đ");
 

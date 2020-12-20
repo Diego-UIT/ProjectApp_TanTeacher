@@ -73,7 +73,7 @@ public class PayActivity extends AppCompatActivity {
             //TODO - put object into cart - DONE?
             try {
                 JSONObject jo = new JSONObject();
-                jo.put("idCourse", cartArray.getJSONObject(i).getString("courseID"));
+                jo.put("_id", cartArray.getJSONObject(i).getString("courseID"));
                 cart.put(jo);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -107,7 +107,7 @@ public class PayActivity extends AppCompatActivity {
                                     //TODO - 21 records - DONE?
                                     cardJo.put("id",token.getCard().getId());
                                     cardJo.put("object","card");
-                                    cardJo.put("address_city", token.getCard().getAddressCity());
+                                    /*cardJo.put("address_city", token.getCard().getAddressCity());
                                     cardJo.put("address_country", token.getCard().getAddressCountry());
                                     cardJo.put("address_line1", token.getCard().getAddressLine1());
                                     cardJo.put("address_line1_check", token.getCard().getAddressLine1Check());
@@ -125,22 +125,21 @@ public class PayActivity extends AppCompatActivity {
                                     cardJo.put("last4", token.getCard().getLast4());
                                     cardJo.put("metadata", token.getCard().getMetadata());
                                     cardJo.put("name","caohoangtu1357@gmail.com");
-                                    cardJo.put("tokenization_method",token.getCard().getTokenizationMethod());
+                                    cardJo.put("tokenization_method",token.getCard().getTokenizationMethod());*/
 
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
                                 try {
                                     //TODO - put information for token object
-                                    tokenJo.put("name", "cao hoang tu");
-                                    tokenJo.put("email","caohoangtu1357@gmail.com");
+                                    tokenJo.put("name", sharedPreferences.getString("name", ""));
+                                    tokenJo.put("email",sharedPreferences.getString("email",""));
                                     tokenJo.put("id", token.getId());
                                     tokenJo.put("object", "token");
-                                    tokenJo.put("created", token.getCreated());
+                                    tokenJo.put("created", token.getCreated().getTime());
                                     tokenJo.put("type", "card");
                                     tokenJo.put("livemode", token.getLivemode());
                                     tokenJo.put("used", token.getUsed());
-                                    tokenJo.put("amount", 100000);
                                     tokenJo.put("card", cardJo);
 
                                 } catch (Exception e) {

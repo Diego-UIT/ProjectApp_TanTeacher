@@ -49,12 +49,12 @@ public class CartCourseAdapter extends RecyclerView.Adapter<CartCourseAdapter.Cu
     @Override
     public void onBindViewHolder(@NonNull CartCourseAdapter.CustomViewHolder holder, int position) {
         holder.title.setText(items.get(position).getTitle());
-        holder.author.setText("Tác giả: "+items.get(position).getAuthor());
+        holder.author.setText("Author: "+items.get(position).getAuthor());
         Picasso.get().load(items.get(position).getUrl()).placeholder(R.drawable.empty23).error(R.drawable.empty23).networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE).into(holder.imageView);
         NumberFormat formatter = new DecimalFormat("#,###");
         double price=(double)items.get(position).getPrice();
         String formattedNumber1 = formatter.format(price);
-        if(formattedNumber1.equals("0")) holder.price.setText("Miễn phí");
+        if(formattedNumber1.equals("0")) holder.price.setText("Free");
         else
             holder.price.setText(formattedNumber1+" đ");
         if(items.get(position).getDiscount()!=0)

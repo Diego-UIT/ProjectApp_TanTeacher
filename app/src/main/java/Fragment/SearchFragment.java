@@ -163,7 +163,7 @@ public class SearchFragment extends Fragment {
 
                         }
                         else
-                            Toast.makeText(getContext(), "Đã có lỗi xảy ra", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
                     }
                 });
 

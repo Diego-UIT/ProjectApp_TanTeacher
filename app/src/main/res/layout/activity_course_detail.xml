@@ -144,7 +144,7 @@
             android:layout_marginRight="10dp"
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:text="Tham gia ngay"
+            android:text="Join Now"
             android:textAlignment="center"
             android:id="@+id/joinCourse"
             android:layout_marginTop="20dp"
@@ -175,7 +175,7 @@
                     android:id="@+id/addToCart"
                     android:paddingBottom="25dp"
                     android:background="#3867D6"
-                    android:text="Thêm vào giỏ"
+                    android:text="Add to Cart"
                     android:textSize="11dp"
                     android:textColor="#fff"
 
@@ -192,7 +192,7 @@
                     android:layout_weight=".5"
                     android:paddingTop="25dp"
                     android:paddingBottom="25dp"
-                    android:text="Viết đánh giá"
+                    android:text="Write comment"
                     android:elevation="25dp"
                     android:id="@+id/writeComment"
                     android:textColor="#3F51B5"
@@ -215,7 +215,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mô tả"
+                android:text="Description"
                 android:textSize="20dp"
                 android:textColor="#000"
                 android:fontFamily="@font/open_sans_bold"
@@ -246,7 +246,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Chấm điểm"
+                android:text="Rating"
                 android:textSize="20dp"
                 android:textColor="#000"
                 android:fontFamily="@font/open_sans_bold"
@@ -294,7 +294,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Khóa học liên quan"
+                android:text="Related Courses"
                 android:textSize="20dp"
                 android:textColor="#000"
                 android:fontFamily="@font/open_sans_bold"
@@ -321,7 +321,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Đánh giá của học viên"
+                android:text="Comments"
                 android:textSize="20dp"
                 android:textColor="#000"
                 android:fontFamily="@font/open_sans_bold"

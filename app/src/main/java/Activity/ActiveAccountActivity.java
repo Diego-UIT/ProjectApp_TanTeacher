@@ -44,7 +44,7 @@ public class ActiveAccountActivity extends AppCompatActivity {
         iMyService=retrofitClient.create(IMyService.class);
         mail=userAccount.getMail();
         //Toast.makeText(this, mail, Toast.LENGTH_SHORT).show();
-        Toast.makeText(ActiveAccountActivity.this, "Mã kích hoạt đã được gửi đến mail của bạn", Toast.LENGTH_LONG).show();
+        Toast.makeText(ActiveAccountActivity.this, "Activated code was sent to your email", Toast.LENGTH_LONG).show();
         XacNhanBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,7 +85,7 @@ public class ActiveAccountActivity extends AppCompatActivity {
 
                         //JSONObject jObjError = new JSONObject(e.)
 
-                        Toast.makeText(ActiveAccountActivity.this, "Mã kích hoạt không đúng", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ActiveAccountActivity.this, "Wrong activated code", Toast.LENGTH_SHORT).show();
 
                     }
 
@@ -98,7 +98,7 @@ public class ActiveAccountActivity extends AppCompatActivity {
 
                                     }
                                 }, 500);
-                        Toast.makeText(ActiveAccountActivity.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ActiveAccountActivity.this, "Sign up success", Toast.LENGTH_SHORT).show();
 
                         Intent intent=new Intent(ActiveAccountActivity.this,LoginActivity.class);
                         intent.putExtra("userAcc",userAccount);
@@ -112,7 +112,7 @@ public class ActiveAccountActivity extends AppCompatActivity {
         boolean valid=false;
         activeCode=ActTokenEdtText.getText().toString();
         if(activeCode.isEmpty()) {valid=false;
-            Toast.makeText(this, "Nhập mã kích hoạt", Toast.LENGTH_SHORT).show();}
+            Toast.makeText(this, "Enter your activated code", Toast.LENGTH_SHORT).show();}
         else valid=true;
         return valid;
     }

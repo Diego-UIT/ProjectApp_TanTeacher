@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tutorial_v1.R;
@@ -35,7 +36,7 @@ public class UserPasswordChangeActivity extends AppCompatActivity {
     EditText OldPass, newPass, confirmPass;
     Button UpdateBtn;
     IMyService iMyService;
-
+    TextView forgotPass;
     AlertDialog alertDialog;
     boolean flag=false;
     UserAccount userAccount=new UserAccount();
@@ -69,6 +70,13 @@ public class UserPasswordChangeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(checkValidInput()) changePass();
+            }
+        });
+        forgotPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserPasswordChangeActivity.this, ConfirmEmailActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -135,7 +143,7 @@ public class UserPasswordChangeActivity extends AppCompatActivity {
                                 }, 500);
 
                         if(flag==true)
-                        { Toasty.success(UserPasswordChangeActivity.this, "Cập nhật mật khẩu thành công", Toast.LENGTH_SHORT).show();
+                        { Toasty.success(UserPasswordChangeActivity.this, "Update password success", Toast.LENGTH_SHORT).show();
                             final Intent data = new Intent();
 
                             // Truyền data vào intent
@@ -149,7 +157,7 @@ public class UserPasswordChangeActivity extends AppCompatActivity {
                             finish();
                         }
                         else
-                            Toast.makeText(UserPasswordChangeActivity.this, "Cập nhật thất bại", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(UserPasswordChangeActivity.this, "Update failed", Toast.LENGTH_SHORT).show();
                         UpdateBtn.setEnabled(true);
                         UpdateBtn.setClickable(true);
 
@@ -165,7 +173,7 @@ public class UserPasswordChangeActivity extends AppCompatActivity {
         if(oldPassord.isEmpty()||!oldPassord.equals(userAccount.getMatkhau()))
         {
             valid=false;
-            Toast.makeText(this, "Mật khẩu hiện tại không đúng", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Duplicated with old password", Toast.LENGTH_SHORT).show();
             return valid;
         }
         else
@@ -175,7 +183,7 @@ public class UserPasswordChangeActivity extends AppCompatActivity {
         if(newPassword.isEmpty() || newPassword.length() <8 || newPassword.length()>16)
         {
             valid=false;
-            Toast.makeText(this, "Mật khẩu mới phải từ 8 đến 16 ký tự", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "New password must from 8 to 16 characters", Toast.LENGTH_SHORT).show();
             return valid;
         }
         else{
@@ -184,7 +192,7 @@ public class UserPasswordChangeActivity extends AppCompatActivity {
         if(!confirmPassword.equals(newPassword))
         {
             valid=false;
-            Toast.makeText(this, "Xác nhận mật khẩu không khóp", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Wrong confirm password", Toast.LENGTH_SHORT).show();
             return valid;
 
 
@@ -201,6 +209,6 @@ public class UserPasswordChangeActivity extends AppCompatActivity {
         newPass=findViewById(R.id.newPass);
         confirmPass=findViewById(R.id.confirmPass);
         UpdateBtn=findViewById(R.id.updatePassBtn);
-
+        forgotPass=findViewById(R.id.forgotPass_update);
     }
 }

@@ -142,7 +142,7 @@ public class ConfimTokenActivity extends AppCompatActivity {
 
         if(newPassword.isEmpty() || newPassword.length() <8 || newPassword.length()>16 )
         {
-            newPasswordEditText.setError("Mật khẩu có 8 đến 16 ký tự");
+            newPasswordEditText.setError("Must from 8 to 16 characters");
             valid = false;
         } else {
             newPasswordEditText.setError(null);
@@ -150,7 +150,7 @@ public class ConfimTokenActivity extends AppCompatActivity {
 
         if(confirmPassword.isEmpty() || confirmPassword.length() < 8 || confirmPassword.length()>16 || !confirmPassword.equals(newPassword) )
         {
-            confirmPasswordEditText.setError("Mật khẩu không khớp");
+            confirmPasswordEditText.setError("Wrong confirm password");
             valid = false;
         } else{
             confirmPasswordEditText.setError(null);

@@ -154,12 +154,12 @@ public class mycoursesFragment extends Fragment {
                                 flag=true;
                             } catch (JSONException e) {
                                 e.printStackTrace();
-                                Toast.makeText(getContext(), e.toString(), Toast.LENGTH_LONG).show();
+                                /*Toast.makeText(getContext(), e.toString(), Toast.LENGTH_LONG).show();*/
                             }
 
                         }
                         else
-                            Toast.makeText(getContext(), "Chưa có dữ liệu", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "No data available", Toast.LENGTH_SHORT).show();
 
                     }
                 });

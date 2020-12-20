@@ -44,13 +44,18 @@ public class LoginActivity extends AppCompatActivity {
     AlertDialog alertDialog;
     UserAccount userAccount;
     SharedPreferences sharedPreferences;
+    boolean checkLoginStatus = false;
     boolean flag=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        checkLoginStatus = sharedPreferences.getBoolean("already_login", false);
         setContentView(R.layout.activity_login);
-
+        if (checkLoginStatus){
+            Intent intent = new Intent(LoginActivity.this, HomeScreenActivity.class);
+            startActivity(intent);
+        }
         setUIReference();
 
         Retrofit retrofitClient= RetrofitClient.getInstance();
@@ -131,6 +136,7 @@ public class LoginActivity extends AppCompatActivity {
                                         editor.putString("address",userAccount.getDiachia());
                                         editor.putString("password",MatKhau);
                                         editor.putString("id",userAccount.getID());
+                                        editor.putBoolean("already_login", true);
                                         editor.commit();
                                         flag=true;
                                     } catch (JSONException e) {
@@ -181,7 +187,7 @@ public class LoginActivity extends AppCompatActivity {
 
                             }
                             else {
-                                Toast.makeText(LoginActivity.this, "Tài khoản hoặc mật khẩu không đúng", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "Invalid Email or Password", Toast.LENGTH_SHORT).show();
                                 loginBtn.setClickable(true);
                                 loginBtn.setEnabled(true);
                             }
@@ -207,14 +213,14 @@ public class LoginActivity extends AppCompatActivity {
         MatKhau=mkEditText.getText().toString();
         if(TaiKhoan.isEmpty() ||TaiKhoan.length() < 6 || TaiKhoan.length() >40 )
         {
-            tkEditText.setError("Từ 6 đến 40 ký tự");
+            tkEditText.setError("Must from 6 to 40 characters");
             valid = false;
         } else {
             tkEditText.setError(null);
         }
         if(MatKhau.isEmpty() || MatKhau.length() <8 ||MatKhau.length()>16 )
         {
-            mkEditText.setError("Mật khẩu có 8 đến 16 ký tự");
+            mkEditText.setError("Must from 8 to 16 characters");
             valid = false;
         } else {
             mkEditText.setError(null);

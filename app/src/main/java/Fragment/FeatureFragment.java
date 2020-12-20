@@ -208,7 +208,7 @@ public class FeatureFragment extends Fragment {
 
                         }
                         else
-                            Toast.makeText(getContext(), "Đã có lỗi xảy ra", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Load free courses Error", Toast.LENGTH_SHORT).show();
 
                     }
                 });
@@ -308,7 +308,7 @@ public class FeatureFragment extends Fragment {
 
                         }
                         else
-                            Toast.makeText(getContext(), "Đã có lỗi xảy ra", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Load new courses Error", Toast.LENGTH_SHORT).show();
 
                     }
                 });
@@ -406,7 +406,7 @@ public class FeatureFragment extends Fragment {
 
                         }
                         else
-                            Toast.makeText(getContext(), "Đã có lỗi xảy ra", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Load to courses Error", Toast.LENGTH_SHORT).show();
 
                     }
                 });
@@ -488,7 +488,7 @@ public class FeatureFragment extends Fragment {
 
                         }
                         else
-                            Toast.makeText(getContext(), "Đã có lỗi xảy ra", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Load categories Error", Toast.LENGTH_SHORT).show();
 
                     }
                 });
